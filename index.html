@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ranking - Arcade Fight Fest</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #111;
+      color: white;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #f7c600;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #222;
+      color: white;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #444;
+    }
+
+    th {
+      background-color: #333;
+    }
+
+    /* Colores para los 3 primeros lugares */
+    .gold {
+      background-color: #f7c600;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .silver {
+      background-color: #c0c0c0;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .bronze {
+      background-color: #cd7f32;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tr {
+        margin-bottom: 15px;
+        border: 1px solid #444;
+        padding: 10px;
+        background-color: #222;
+      }
+
+      td {
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+        border: none;
+        border-bottom: 1px solid #333;
+      }
+
+      td::before {
+        position: absolute;
+        top: 12px;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #f7c600;
+      }
+
+      td:nth-of-type(1)::before { content: "#"; }
+      td:nth-of-type(2)::before { content: "Participante"; }
+      td:nth-of-type(3)::before { content: "Puntaje"; }
+
+      /* Colores móviles para primeros puestos */
+      .gold td::before,
+      .silver td::before,
+      .bronze td::before {
+        color: inherit;
+      }
+
+      .gold td,
+      .silver td,
+      .bronze td {
+        background-color: inherit;
+        color: inherit;
+        font-weight: bold;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Ranking - Arcade Fight Fest</h1>
+  <table id="ranking">
+    <thead>
+      <tr><th>#</th><th>Participante</th><th>Puntaje</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQlQjQfQX5_oufrC06k_4PNJFB1FNWAdXSIRpaFQJpIupuP_FWQAhYAesJZwUqOrENVC8cTs7sX-Z2a/pub?gid=0&single=true&output=csv';
+
+    fetch(CSV_URL)
+      .then(response => response.text())
+      .then(data => {
+        const rows = data.trim().split('\n').slice(1); // Quita encabezado
+        const parsed = rows.map(r => r.split(',')).filter(row => row[0] && row[1]);
+
+        parsed.sort((a, b) => Number(b[1]) - Number(a[1]));
+
+        const tbody = document.querySelector('#ranking tbody');
+        parsed.forEach((row, index) => {
+          const tr = document.createElement('tr');
+
+          // Agregar clase según posición
+          if (index === 0) tr.classList.add('gold');
+          else if (index === 1) tr.classList.add('silver');
+          else if (index === 2) tr.classList.add('bronze');
+
+          tr.innerHTML = `<td>${index + 1}</td><td>${row[0]}</td><td>${row[1]}</td>`;
+          tbody.appendChild(tr);
+        });
+      });
+  </script>
+</body>
+</html>
