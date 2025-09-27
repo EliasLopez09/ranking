@@ -25,12 +25,8 @@
     }
 
     @keyframes glow {
-      from {
-        text-shadow: 0 0 5px #0ff;
-      }
-      to {
-        text-shadow: 0 0 20px #0ff, 0 0 30px #0ff;
-      }
+      from { text-shadow: 0 0 5px #0ff; }
+      to { text-shadow: 0 0 20px #0ff, 0 0 30px #0ff; }
     }
 
     table {
@@ -40,7 +36,6 @@
       background-color: rgba(20, 20, 20, 0.9);
       border: 2px solid #0ff;
       box-shadow: 0 0 10px #0ff;
-      overflow-x: auto;
     }
 
     th, td {
@@ -65,33 +60,44 @@
       transform: scale(1.02);
     }
 
-    .gold {
-      background-color: #FFD700 !important;
-      color: #000;
-      font-weight: bold;
+    .gold { background-color: #FFD700 !important; color: #000; font-weight: bold; }
+    .silver { background-color: #C0C0C0 !important; color: #000; font-weight: bold; }
+    .bronze { background-color: #cd7f32 !important; color: #fff; font-weight: bold; }
+
+    /* --- NUEVA SECCIÓN --- */
+    .winners {
+      text-align: center;
+      margin: 50px auto;
+      max-width: 800px;
     }
 
-    .silver {
-      background-color: #C0C0C0 !important;
-      color: #000;
-      font-weight: bold;
+    .winners h2 {
+      font-family: 'Press Start 2P', cursive;
+      color: #ff0;
+      text-shadow: 0 0 8px #ff0, 0 0 15px #ff0;
+      margin-bottom: 20px;
     }
 
-    .bronze {
-      background-color: #cd7f32 !important;
-      color: #fff;
-      font-weight: bold;
+    .winners blockquote {
+      width: 100%;
+      max-width: 400px;
+      height: 600px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #0ff;
+    }
+
+    .winners img {
+      margin-top: 20px;
+      width: 100%;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #ff0;
     }
 
     @media (max-width: 768px) {
-      table, thead, tbody, th, td, tr {
-        display: block;
-      }
-
-      thead {
-        display: none;
-      }
-
+      table, thead, tbody, th, td, tr { display: block; }
+      thead { display: none; }
       tr {
         margin-bottom: 20px;
         background-color: rgba(20, 20, 20, 0.8);
@@ -99,13 +105,7 @@
         border: 1px solid #0ff;
         border-radius: 8px;
       }
-
-      td {
-        padding: 10px;
-        text-align: left;
-        position: relative;
-      }
-
+      td { padding: 10px; text-align: left; position: relative; }
       td::before {
         position: absolute;
         left: 10px;
@@ -114,15 +114,10 @@
         font-weight: bold;
         font-size: 12px;
       }
-
       td:nth-of-type(1)::before { content: "#"; }
       td:nth-of-type(2)::before { content: "Participante"; }
       td:nth-of-type(3)::before { content: "Puntaje"; }
-
-      td {
-        padding-left: 40%;
-        font-size: 14px;
-      }
+      td { padding-left: 40%; font-size: 14px; }
     }
   </style>
 </head>
@@ -134,6 +129,16 @@
     </thead>
     <tbody></tbody>
   </table>
+
+  <!-- NUEVA SECCIÓN -->
+  <div class="winners">
+    <h2>🎉 Ganadores del Arcade Fight Fest 🎉</h2>
+    
+    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@mundo.de.juegos61/video/7550528658352393528" data-video-id="7550528658352393528" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@mundo.de.juegos61" href="https://www.tiktok.com/@mundo.de.juegos61?refer=embed">@mundo.de.juegos61</a> <a title="arcade" target="_blank" href="https://www.tiktok.com/tag/arcade?refer=embed">#arcade</a> <a title="tekken" target="_blank" href="https://www.tiktok.com/tag/tekken?refer=embed">#tekken</a>  <a title="paratiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii" target="_blank" href="https://www.tiktok.com/tag/paratiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii?refer=embed">#paratiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</a>   <a title="viraltiktok" target="_blank" href="https://www.tiktok.com/tag/viraltiktok?refer=embed">#viraltiktok</a> <a title="sigueme_y_te_sigo" target="_blank" href="https://www.tiktok.com/tag/sigueme_y_te_sigo?refer=embed">#sigueme_y_te_sigo</a> <a target="_blank" title="♬ sonido original - 🌠Mundo.de.juegos🌌" href="https://www.tiktok.com/music/sonido-original-7550528674388626182?refer=embed">♬ sonido original - 🌠Mundo.de.juegos🌌</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+    
+    <!-- Foto de los ganadores -->
+    <img src="img/ganadores.png" alt="Ganadores del Arcade Fight Fest">
+  </div>
 
   <script>
     const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQlQjQfQX5_oufrC06k_4PNJFB1FNWAdXSIRpaFQJpIupuP_FWQAhYAesJZwUqOrENVC8cTs7sX-Z2a/pub?gid=0&single=true&output=csv';
