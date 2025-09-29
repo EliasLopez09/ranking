@@ -30,6 +30,7 @@
             color: var(--color-text-light);
             min-height: 100vh;
             display: flex;
+            overflow-x: hidden; /* Esto previene el desplazamiento horizontal */
         }
 
         .sidebar { display: none; } /* Ocultar barra lateral */
@@ -64,6 +65,16 @@
             max-width: 1200px;
             width: 100%;
             margin: 0 auto;
+            padding: 20px 10px; /* Reducimos el padding lateral en móvil para dar más espacio */
+        }
+
+        /* ⚠️ Ajuste crucial para el TikTok */
+        .tiktok-embed-container {
+            /* Eliminamos el max-width/min-width que tenía el bloque en el HTML */
+            width: 100%;
+            overflow: hidden; /* Esto es clave para cortar cualquier parte del iframe de TikTok que se salga */
+            text-align: center;
+            margin-top: 20px;
         }
 
         /* LOGO Organizador */
@@ -366,16 +377,21 @@
                     <h3><i class="fas fa-map-marker-alt"></i> Ubicación y Promoción</h3>
                     
                     <div class="tiktok-embed-container">
-                       <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@mundo.de.juegos61/video/7555216594033528075" data-video-id="7555216594033528075" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@mundo.de.juegos61" href="https://www.tiktok.com/@mundo.de.juegos61?refer=embed">@mundo.de.juegos61</a> <a title="sigueme_y_te_sigo" target="_blank" href="https://www.tiktok.com/tag/sigueme_y_te_sigo?refer=embed">#sigueme_y_te_sigo</a> <a title="paratiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii" target="_blank" href="https://www.tiktok.com/tag/paratiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii?refer=embed">#paratiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</a> <a title="premios" target="_blank" href="https://www.tiktok.com/tag/premios?refer=embed">#premios</a> <a title="tekken" target="_blank" href="https://www.tiktok.com/tag/tekken?refer=embed">#tekken</a> <a title="viraltiktok" target="_blank" href="https://www.tiktok.com/tag/viraltiktok?refer=embed">#viraltiktok</a> <a target="_blank" title="♬ Bailan Rochas y Chetas - Nene Malo" href="https://www.tiktok.com/music/Bailan-Rochas-y-Chetas-6716644239213594625?refer=embed">♬ Bailan Rochas y Chetas - Nene Malo</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
-                   </div>
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@mundo.de.juegos61/video/7555216594033528075" 
+                            data-video-id="7555216594033528075"> 
+                            <section> 
+                                </section> 
+                        </blockquote> 
+                        <script async src="https://www.tiktok.com/embed.js"></script>
+                    </div>
                     <p style="font-size: 14px; color: var(--color-text-muted);">Encuentra la ubicación exacta del salón:</p>
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d323.5276238115237!2d-68.20778450395066!3d-16.54440857536686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTbCsDMyJzM5LjUiUyA2OMKwMTInMjcuNCJX!5e1!3m2!1ses!2sbo!4v1759019597092!5m2!1ses!2sbo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d323.5276238115237!2d-68.20778450395066!3d-16.54440857536686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTbCsDMyJzM5LjUiUyA2OMKwMTInMjcuNCJX!5e1!3m2!1ses!2sbo!4v1759019597092!5m2!1ses!2sbo" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
 
-                    <div style="margin-top: 20px;" class="image-container">
-                        <img src="img/mdj.jpeg" alt="Tekken 8 - PS5">
-                    </div>
+                        <div style="margin-top: 20px;" class="image-container">
+                            <img src="img/mdj.jpeg" alt="Tekken 8 - PS5">
+                        </div>
                 </div>
                 
             </div>
