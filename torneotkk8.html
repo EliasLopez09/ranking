@@ -340,7 +340,11 @@
 
             <div class="status-box" id="contador">Cargando participantes...</div>
             <div class="status-box completed-box" id="completado">
-                <i class="fas fa-check-circle"></i> ¡Cupos Completados (20/20)! El torneo iniciará el 15 de noviembre de 2025 a las 17:00 horas.
+                <i class="fas fa-check-circle"></i> ¡Cupos Completados (20/20)! El torneo iniciará el 1 de noviembre de 2025 a las 16:00 horas.
+            </div>
+
+            <div class="status-box" id="contador">
+                <i class="fas fa-check-circle"></i> El torneo iniciará el 15 de noviembre de 2025 a las 17:00 horas.
             </div>
             
             <!-- <div class="status-box" style="border-left: 5px solid #ff0; color: #ff0; font-size: 14px; margin-top: -10px;">
@@ -432,27 +436,15 @@
                 });
 
                 const total = participantes.length;
-                // ✅ Mostrar la cantidad actual de participantes
-const total = participantes.length;
-
-// Mostrar siempre la fecha fija del torneo
-if (total > 0) {
-    contadorDiv.innerHTML = `
-        <i class="fas fa-calendar-check"></i> Torneo confirmado con ${total} participantes inscritos.<br>
-        🕔 Fecha de inicio: <strong>15 de noviembre de 2025 - 17:00 hrs</strong><br>
-        🎮 Lugar: <strong>MUNDO DE JUEGOS</strong>
-    `;
-    contadorDiv.style.backgroundColor = "#004d00";
-    contadorDiv.style.borderLeft = "5px solid #0f0";
-    contadorDiv.style.color = "#fff";
-    contadorDiv.style.display = "block";
-    completadoDiv.style.display = "none";
-} else {
-    contadorDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> No hay inscritos aún. ¡Regístrate para participar!`;
-    contadorDiv.style.display = "block";
-    completadoDiv.style.display = "none";
-}
-
+                if (total < max_participantes) {
+                    const faltantes = max_participantes - total;
+                    contadorDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> Inscritos: ${total}/${max_participantes} → Faltan ${faltantes} cupos para el torneo. ¡Inscríbete!`;
+                    contadorDiv.style.display = "block";
+                    completadoDiv.style.display = "none";
+                } else {
+                    contadorDiv.style.display = "none";
+                    completadoDiv.style.display = "block";
+                }
             })
             .catch(error => {
                 console.error("Error fetching data:", error);
@@ -461,4 +453,3 @@ if (total > 0) {
     </script>
 </body>
 </html>
-
